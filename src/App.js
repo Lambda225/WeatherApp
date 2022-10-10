@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Contener from "./components/Contener";
+import Filter from "./components/Filter";
+import ImageBox from "./components/ImageBox";
+import TextBox from "./components/TextBox";
+import WeatherDetail from "./components/WeatherDetail";
+import Wrapper from "./components/Wrapper";
+import WrapperResponsive from "./components/WrapperResponsive";
+import ApiProvider from "./context/ApiContext";
+import WeatherProvider from "./context/WeatherContext";
+
 
 function App() {
+
+  const [visible,setVisible] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <WeatherProvider>
+          <Contener>
+            <Wrapper>
+              <ImageBox setVisible={setVisible} />
+              <TextBox>
+                <Filter />
+                <WeatherDetail />
+              </TextBox>
+              <WrapperResponsive visible={visible} setVisible={setVisible} />
+            </Wrapper>
+          </Contener>
+      </WeatherProvider>
     </div>
   );
 }
