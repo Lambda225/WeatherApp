@@ -7,7 +7,7 @@ function WeatherProvider({children}) {
     const [data,setData] = useState({})
     const [api,setApi] = useState({
       'base':'https://api.openweathermap.org/data/2.5/',
-      'kye':'53e4727ceba19dd478796c111f850894'
+      'kye':''
     })
 
     const providerValue = {
